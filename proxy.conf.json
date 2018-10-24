@@ -1,0 +1,10 @@
+{
+  "/intra/*": {
+    "target": "https://intra.epitech.eu",
+    "secure": true,
+    "pathRewrite": {
+      "^/intra": ""
+    },
+    "changeOrigin": true
+  }
+}
