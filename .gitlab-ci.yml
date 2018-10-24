@@ -42,7 +42,7 @@ S-Elon:
   - docker-compose up -d
   environment:
     name: Production
-    url: https://assistant.epitech.detroyes.fr
+    url: https://epitech-assistant.detroyes.fr
   after_script:
   - echo "[S-ELON] Ending Steve's step"
   only:
