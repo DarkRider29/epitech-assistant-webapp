@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/assistant-epitech-front",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -29,8 +29,7 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/hammerjs/hammer.js",
-              "node_modules/materialize-css/dist/js/materialize.js",
-              "node_modules/hellojs/dist/hello.all.js"
+              "node_modules/materialize-css/dist/js/materialize.js"
             ]
           },
           "configurations": {
@@ -103,6 +102,7 @@
     },
     "assistant-epitech-front-e2e": {
       "root": "e2e/",
+      "sourceRoot": "e2e",
       "projectType": "application",
       "architect": {
         "e2e": {
