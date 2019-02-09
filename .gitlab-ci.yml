@@ -74,7 +74,7 @@ Deploy:
   - bash
 
 #==================== [ STOP ] ====================
-Stop:Production:
+Stop:
   stage: deploy
   script:
   - docker-compose stop

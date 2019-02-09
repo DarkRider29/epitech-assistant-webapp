@@ -1,8 +1,9 @@
 version: '3'
 services:
-  assistant-epitech-front:
+  assistant-epitech:
     build:
       context: .
+    image: assistant-epitech:webapp
     restart: always
     container_name: ${CI_PROJECT_NAME}
     ports:
