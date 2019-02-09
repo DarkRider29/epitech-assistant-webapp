@@ -1,0 +1,57 @@
+.container {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/assets/old_moon.png");
+  background-repeat: repeat;
+}
+
+.card {
+  max-width: 400px;
+}
+
+.officeLogo {
+  background-image: url("/assets/Office_365_logo.png");
+  background-repeat: no-repeat;
+  background-size: 90%, 100%;
+  background-position: center;
+  width: 150px;
+  height: 100px;
+
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+}
+.lds-dual-ring {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fdd;
+  border-color: #fdd transparent #fdd transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

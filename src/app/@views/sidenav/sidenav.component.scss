@@ -1,0 +1,78 @@
+.sidenav-container {
+  height: 100%;
+
+}
+
+.sidenav {
+  width: 250px;
+
+}
+
+@media only screen and (max-width: 640px) {
+  .sidenav {
+    width: 100%;
+  }
+
+}
+
+mat-toolbar-row .header {
+  margin-left: 20px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.icon-disconnect {
+  padding: 0 14px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: Roboto-Regular, sans-serif;
+}
+
+.container {
+  height: calc(100% - 70px);
+  background-color: white;
+  margin: 0px;
+  overflow: hidden;
+}
+
+
+.navbar {
+  position: relative;
+  height: 70px;
+}
+mat-nav-list {
+}
+
+mat-nav-list a span {
+  margin-left: 20px;
+}
+
+mat-toolbar {
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  justify-content: space-between;
+  width: 100%;
+  top: 0;
+  background-color: #202124;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  opacity: 1;
+  z-index: 2;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+}
+
+mat-sidenav-content
+{
+  background-image: url("/assets/old_moon.png");
+  background-repeat: repeat;
+}

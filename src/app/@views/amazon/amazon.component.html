@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar><img id="photo" [src]="imageToShow || '/assets/amazon.png'" class="mat-card-avatar"></div>
+    <div *ngIf="isLogged(); else titleDisconnected">
+      <mat-card-title>{{firstName}} {{lastName}}</mat-card-title>
+      <mat-card-subtitle>{{nickName}}</mat-card-subtitle>
+    </div>
+    <ng-template #titleDisconnected>
+      <div>
+        <mat-card-title>Amazon</mat-card-title>
+        <mat-card-subtitle>Connexion</mat-card-subtitle>
+      </div>
+    </ng-template>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div *ngIf="!isLogged(); else contentDisconnect">
+      <p>Identifiez-vous avec Amazon pour utiliser l'assistant sur Amazon Echo !</p>
+    </div>
+    <ng-template #contentDisconnect>
+      <p>Vous etes actuellement connecté avec Google.</p>
+    </ng-template>
+    <div class="flex-center">
+      <div *ngIf="!isLogged(); else buttonDisconnect">
+        <button matTooltip="S'identifier" (click)="loginAmazon()" mat-raised-button>
+          <img class="amazon-logo" src="/assets/amazon.png">
+          Connexion
+        </button>
+      </div>
+      <ng-template #buttonDisconnect>
+        <button matTooltip="Se déconnecter" (click)="logoutAmazon()" mat-raised-button>
+          Déconnexion
+        </button>
+      </ng-template>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <mat-chip-list>
+      <mat-chip>Google</mat-chip>
+      <div *ngIf="isLogged(); else disconnected">
+        <mat-chip class="chip-color-green">Connecté</mat-chip>
+      </div>
+      <ng-template #disconnected>
+        <mat-chip class="chip-color-red">Déconnecté</mat-chip>
+      </ng-template>
+    </mat-chip-list>
+  </mat-card-actions>
+
+</mat-card>

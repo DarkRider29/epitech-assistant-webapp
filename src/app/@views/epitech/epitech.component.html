@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar><img id="photo" [src]="imageToShow || ''" class="mat-card-avatar"></div>
+    <mat-card-title>{{firstName}} {{lastName}}
+      <mat-chip-list>
+      <mat-chip>{{location}}</mat-chip>
+      <mat-chip>{{promo}}</mat-chip>
+      <mat-chip>{{courses}}</mat-chip>
+    </mat-chip-list></mat-card-title>
+    <mat-card-subtitle>{{email}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>
+      Vous etes automatiquement connecté avec l'intranet d'Epitech.
+    </p>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <mat-chip-list>
+      <mat-chip>Intranet Epitech</mat-chip>
+      <mat-chip class="chip-color-green">Connecté</mat-chip>
+    </mat-chip-list>
+  </mat-card-actions>
+
+</mat-card>
