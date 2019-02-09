@@ -1,9 +1,0 @@
-version: '3'
-services:
-  assistant-epitech-front:
-    build: .
-    restart: always
-    ports:
-    - ${PORT}:80
-    environment:
-    - PORT=${PORT}
