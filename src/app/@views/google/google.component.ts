@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GoogleService} from '../../@shared/services/api/google/google.service';
 import {AnimationError, AnimationLoading, AnimationSuccess} from '../../@shared/animations/animations';
 import {MatSnackBar} from '@angular/material';
@@ -96,5 +96,9 @@ export class GoogleComponent implements OnInit {
 
   isLogged() {
     return this.googleService.isAuthenticated();
+  }
+
+  isLinked() {
+    return true;
   }
 }

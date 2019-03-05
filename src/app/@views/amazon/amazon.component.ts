@@ -96,4 +96,8 @@ export class AmazonComponent implements OnInit {
   isLogged() {
     return this.amazonService.isAuthenticated();
   }
+
+  isLinked() {
+    return true;
+  }
 }
