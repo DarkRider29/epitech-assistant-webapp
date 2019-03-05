@@ -4,7 +4,12 @@
       <button type="button" mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <div class="header">Epitech Assistant</div>
+      <div class="logo">
+        <img class="logo-brand" src="/assets/logo_64.png">
+      </div>
+      <div class="header">
+        Epitech Assistant
+      </div>
       <span class="spacer"></span>
       <div class="icon-disconnect">
         <button type="button" matTooltip="Déconnexion" mat-icon-button (click)="logout()">
@@ -22,10 +27,6 @@
         <a mat-list-item routerLink='/dashboard/home'>
           <mat-icon>home</mat-icon>
           <span>Dashboard</span></a>
-        <mat-divider></mat-divider>
-        <a mat-list-item routerLink='/second'>
-          <mat-icon>person</mat-icon>
-          <span>Profile</span></a>
         <mat-divider></mat-divider>
         <a mat-list-item routerLink='/dashboard/chat'>
           <mat-icon>chat</mat-icon>

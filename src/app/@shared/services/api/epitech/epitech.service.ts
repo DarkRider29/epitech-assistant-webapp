@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Intranet} from '../../../models/Intranet';
+import {environment} from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,6 @@ export class EpitechService {
   getUser(): Observable<Intranet> {
 
     return this.http
-      .get<any>(`intra/${this.autologin}/user/?format=json`, this.authRequestOptions());
+      .get<any>(`${environment.epitechAPI}${this.autologin}/user/?format=json`, this.authRequestOptions());
   }
 }

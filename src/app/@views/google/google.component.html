@@ -22,10 +22,41 @@
     </ng-template>
     <div class="flex-center">
       <div *ngIf="!isLogged(); else buttonDisconnect">
-        <button matTooltip="S'identifier" (click)="loginGoogle()" mat-raised-button>
-          <img class="google-logo" src="/assets/google.png">
-          Connexion
-        </button>
+        <div *ngIf="popup; else login">
+          <!--<div class="lds-dual-ring"></div>-->
+          <lottie-animation-view
+            [options]="animationLoading"
+            [width]="100"
+            [height]="100"
+            (animCreated)="handleAnimationLoading($event)">
+          </lottie-animation-view>
+        </div>
+        <ng-template #login>
+          <div *ngIf="endPopup; else endPopupLogin">
+            <div *ngIf="logged; else notLogin">
+              <lottie-animation-view
+                [options]="animationSuccess"
+                [width]="100"
+                [height]="100"
+                (animCreated)="handleAnimationSuccess($event)">
+              </lottie-animation-view>
+            </div>
+            <ng-template #notLogin>
+              <lottie-animation-view
+                [options]="animationError"
+                [width]="100"
+                [height]="100"
+                (animCreated)="handleAnimationError($event)">
+              </lottie-animation-view>
+            </ng-template>
+          </div>
+          <ng-template #endPopupLogin>
+            <button matTooltip="S'identifier" (click)="loginGoogle()" mat-raised-button>
+              <img class="google-logo" src="/assets/google.png">
+              Connexion
+            </button>
+          </ng-template>
+        </ng-template>
       </div>
       <ng-template #buttonDisconnect>
         <button matTooltip="Se déconnecter" (click)="logoutGoogle()" mat-raised-button>

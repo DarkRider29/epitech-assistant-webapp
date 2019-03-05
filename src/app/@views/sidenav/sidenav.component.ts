@@ -17,7 +17,7 @@ export class SidenavComponent {
 
   logout() {
     this.authService.logout().then(r => {
-      this.snackBar.open('Vous vous etes déconnecté !', 'Fermer', {
+      this.snackBar.open('Vous vous êtes déconnecté !', 'Fermer', {
         duration: 2000
       });
       this.router.navigate(['/']);

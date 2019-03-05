@@ -10,7 +10,7 @@ import {
   MatExpansionModule,
   MatIconModule,
   MatListModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSnackBarModule,
   MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -23,6 +23,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {EpitechComponent} from '../../@views/epitech/epitech.component';
 import {GoogleComponent} from '../../@views/google/google.component';
 import {AmazonComponent} from '../../@views/amazon/amazon.component';
+import {LottieAnimationViewModule} from 'ng-lottie';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import {AmazonComponent} from '../../@views/amazon/amazon.component';
     MatToolbarModule,
     MatCardModule,
     MatChipsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSnackBarModule,
+    LottieAnimationViewModule
   ],
   providers: [],
 })

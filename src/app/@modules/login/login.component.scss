@@ -9,8 +9,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-image: url("/assets/old_moon.png");
   background-repeat: repeat;
+}
+
+.header-logo {
+  background-image: url('/assets/logo_64.png');
+  background-size: cover;
 }
 
 .card {

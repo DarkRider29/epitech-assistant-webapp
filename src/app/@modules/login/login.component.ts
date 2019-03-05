@@ -66,7 +66,6 @@ export class LoginComponent implements OnInit {
         });
         setTimeout(() => this.router.navigate(['/dashboard']), 2000);
       } else {
-        setTimeout(() => this.endPopup = false, 2000);
         this.snackBar.open('Une erreur est survenue lors de la connexion !', 'Fermer', {
           duration: 3000
         });
