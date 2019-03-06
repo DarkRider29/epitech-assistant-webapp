@@ -50,7 +50,11 @@
 .mat-card {
   position: relative;
   margin: 10px;
-  min-height: 230px;
+  min-height: 270px;
+}
+
+.mat-card-content {
+  min-height: 130px;
 }
 
 .chip-color-green {

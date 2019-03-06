@@ -5,6 +5,7 @@ import {MatSnackBar} from '@angular/material';
 
 import {AnimationSuccess, AnimationLoading, AnimationError} from '../../@shared/animations/animations';
 import {Router} from '@angular/router';
+import {OfficeService} from '../../@shared/services/api/office365/office.service';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
   constructor(public authService: AuthService,
               public snackBar: MatSnackBar,
               private zone: NgZone,
-              private router: Router) {
+              private router: Router,
+              private officeService: OfficeService) {
   this.animationSuccess = AnimationSuccess;
   this.animationLoading = AnimationLoading;
   this.animationError = AnimationError;
@@ -59,16 +61,29 @@ export class LoginComponent implements OnInit {
     this.authService.login().then(r => {
       this.endPopup = true;
       this.popup = false;
-      this.logged = r;
       if (r) {
-        this.snackBar.open('Connexion réussie, rédirection ...', 'Fermer', {
-          duration: 2000
+        this.officeService.getUser().subscribe((u) => {
+          if (/(\W|^)[\w.+\-]*@epitech\.eu(\W|$)/.test(u.mail)) {
+            this.logged = true;
+            this.snackBar.open('Connexion réussie, rédirection ...', 'Fermer', {
+              duration: 2000
+            });
+            setTimeout(() => this.router.navigate(['/dashboard']), 2000);
+          } else {
+            this.logged = false;
+            this.snackBar.open('Cette email n\'appartient pas à Epitech !', 'Fermer', {
+              duration: 3000
+            });
+            this.authService.logout();
+            setTimeout(() => this.endPopup = false, 2000);
+          }
         });
-        setTimeout(() => this.router.navigate(['/dashboard']), 2000);
       } else {
+        this.logged = false;
         this.snackBar.open('Une erreur est survenue lors de la connexion !', 'Fermer', {
           duration: 3000
         });
+        setTimeout(() => this.endPopup = false, 2000);
       }
     });
   }

@@ -23,12 +23,10 @@ export class OfficeComponent implements OnInit {
 
   ngOnInit() {
     this.officeService.getUser().toPromise().then((r) => {
-      console.log(r);
       this.firstName = r.givenName;
       this.lastName = r.surname;
       this.email = r.mail;
     });
-
 
     this.officeService.getUserPhoto().toPromise().then((r) => {
       const reader = new FileReader();

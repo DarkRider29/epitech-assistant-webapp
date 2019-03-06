@@ -1,14 +1,12 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../../../../../environments/environment';
 import * as hello from 'hellojs/dist/hello.all.js';
-import {AccountService} from '../../account/account.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleService {
 
-  constructor(public accountService: AccountService) {
+  constructor() {
   }
 
   accessToken(): string {
@@ -29,22 +27,11 @@ export class GoogleService {
     });
   }
 
-  updateUserInDataBase() {
-    this.getUser().then((r) => {
-      this.accountService.getUser(r.id).toPromise().then((u) => {
-        console.log(r);
-      }).catch(e => {
-        console.error(e);
-      });
-    });
-  }
-
   login(): Promise<boolean> {
     return new Promise(((resolve) => {
       hello('google').login().then(
         () => {
           console.log('Connected google !');
-          this.updateUserInDataBase();
           resolve(true);
         },
         e => {

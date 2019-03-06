@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AmazonService} from '../../@shared/services/api/amazon/amazon.service';
 import {MatSnackBar} from '@angular/material';
 import {AnimationError, AnimationLoading, AnimationSuccess} from '../../@shared/animations/animations';
+import {AccountService} from '../../@shared/services/account/account.service';
 
 @Component({
   selector: 'app-amazon',
@@ -17,6 +18,7 @@ export class AmazonComponent implements OnInit {
   popup: boolean;
   logged: boolean;
   endPopup: boolean;
+  private linked: boolean;
   public animationSuccess: Object;
   public animationLoading: Object;
   public animationError: Object;
@@ -24,10 +26,11 @@ export class AmazonComponent implements OnInit {
   private animLoading: any;
   private animError: any;
 
-  constructor(private amazonService: AmazonService, public snackBar: MatSnackBar) {
+  constructor(private amazonService: AmazonService, public snackBar: MatSnackBar, private accountService: AccountService) {
     this.animationSuccess = AnimationSuccess;
     this.animationLoading = AnimationLoading;
     this.animationError = AnimationError;
+    this.linked = false;
   }
 
   ngOnInit() {
@@ -80,7 +83,14 @@ export class AmazonComponent implements OnInit {
         });
       }
       this.refreshUser();
+      this.createAccount();
     });
+  }
+
+  createAccount() {
+    this.amazonService.getUser().then((r => {
+      this.accountService.createUser(r.id, 'amazon');
+    }));
   }
 
   logoutAmazon() {
@@ -98,6 +108,13 @@ export class AmazonComponent implements OnInit {
   }
 
   isLinked() {
-    return true;
+    return this.accountService.isAmazonLinked();
+  }
+
+  unLink() {
+    this.accountService.deleteAccount('amazon');
+    this.snackBar.open('Vous avez supprimer vos comptes Amazon !', 'Fermer', {
+      duration: 3000
+    });
   }
 }

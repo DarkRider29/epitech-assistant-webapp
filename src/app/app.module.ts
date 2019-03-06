@@ -10,6 +10,10 @@ import {AuthService} from './@shared/services/auth/auth.service';
 import {AuthGuard} from './@shared/services/auth/auth.guard';
 import {DashboardModule} from './@modules/dashboard/dashboard.module';
 import {FooterComponent} from './@views/footer/footer.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import {FooterComponent} from './@views/footer/footer.component';
     FlexLayoutModule,
     AppRoutingModule,
     LoginModule,
-    DashboardModule
+    DashboardModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

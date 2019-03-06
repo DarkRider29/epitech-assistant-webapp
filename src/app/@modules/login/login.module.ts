@@ -4,6 +4,7 @@ import { LoginComponent } from './login.component';
 import {MatButtonModule, MatCardModule, MatSnackBarModule, MatTooltipModule} from '@angular/material';
 import {AuthService} from '../../@shared/services/auth/auth.service';
 import {LottieAnimationViewModule} from 'ng-lottie';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -13,7 +14,8 @@ import {LottieAnimationViewModule} from 'ng-lottie';
     MatCardModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    HttpClientModule
   ],
   providers: [AuthService],
   exports: [LoginComponent]

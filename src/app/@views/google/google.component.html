@@ -15,7 +15,12 @@
 
   <mat-card-content>
     <div *ngIf="!isLogged(); else contentDisconnect">
-      <p>Identifiez-vous avec Google pour utiliser l'assistant sur Google Home et Google Assistant !</p>
+      <div *ngIf="isLinked()">
+        <p>Vous avez avec déjà un compte Google lié à nos service mais vous pouvez en ajouter un autre !</p>
+      </div>
+      <div *ngIf="!isLinked()">
+        <p>Identifiez-vous avec Google pour utiliser l'assistant sur Google Home et Google Assistant !</p>
+      </div>
     </div>
     <ng-template #contentDisconnect>
       <p>Vous etes actuellement connecté avec Google.</p>
@@ -64,15 +69,15 @@
         </button>
       </ng-template>
     </div>
+    <div *ngIf="isLinked()">
+      <p>
+        Si vous ne souhaitez plus lier vos comptes Google avec nos services cliquez ici :
+        <button class="chip-color-blue" (click)="unLink()" mat-mini-fab>
+          <mat-icon matTooltip="Ne plus lier avec Google" aria-label="">link_off</mat-icon>
+        </button>
+      </p>
+    </div>
   </mat-card-content>
-  <div *ngIf="isLinked()">
-    <mat-card-content>
-      Si vous ne souhaitez plus lier votre compte Google avec nos services cliquez ici :
-      <button class="chip-color-blue" mat-mini-fab>
-        <mat-icon matTooltip="Ne plus lier avec Google" aria-label="">link_off</mat-icon>
-      </button>
-    </mat-card-content>
-  </div>
   <mat-divider></mat-divider>
   <mat-card-actions>
     <mat-chip-list>
@@ -83,6 +88,9 @@
       <ng-template #disconnected>
         <mat-chip class="chip-color-red">Déconnecté</mat-chip>
       </ng-template>
+      <div *ngIf="isLinked()">
+        <mat-chip class="chip-color-blue">Linké</mat-chip>
+      </div>
     </mat-chip-list>
   </mat-card-actions>
 </mat-card>

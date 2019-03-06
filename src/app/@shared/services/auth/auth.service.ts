@@ -44,7 +44,7 @@ export class AuthService {
 
           scope_delim: ' ',
 
-          login: function(p) {
+          login: function (p) {
             p.options.popup.width = 710;
           },
 
@@ -56,7 +56,8 @@ export class AuthService {
             me: 'user/profile'
           },
           wrap: {
-            me: function(o, headers) {}
+            me: function (o, headers) {
+            }
           }
         },
       },
@@ -80,7 +81,6 @@ export class AuthService {
     return new Promise(((resolve) => {
       hello('msft').login({scope: 'User.Read'}).then(
         () => {
-          console.log("Connected office 365 !");
           resolve(true);
         },
         e => {
@@ -99,7 +99,6 @@ export class AuthService {
           resolve(true);
         },
         e => {
-          console.error(e.error.message);
           resolve(false);
         }
       );

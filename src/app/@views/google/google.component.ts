@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {GoogleService} from '../../@shared/services/api/google/google.service';
 import {AnimationError, AnimationLoading, AnimationSuccess} from '../../@shared/animations/animations';
 import {MatSnackBar} from '@angular/material';
+import {AccountService} from '../../@shared/services/account/account.service';
 
 @Component({
   selector: 'app-google',
@@ -17,6 +18,7 @@ export class GoogleComponent implements OnInit {
   popup: boolean;
   logged: boolean;
   endPopup: boolean;
+  private linked: boolean;
   public animationSuccess: Object;
   public animationLoading: Object;
   public animationError: Object;
@@ -24,10 +26,11 @@ export class GoogleComponent implements OnInit {
   private animLoading: any;
   private animError: any;
 
-  constructor(private googleService: GoogleService, public snackBar: MatSnackBar) {
+  constructor(private googleService: GoogleService, public snackBar: MatSnackBar, private accountService: AccountService) {
     this.animationSuccess = AnimationSuccess;
     this.animationLoading = AnimationLoading;
     this.animationError = AnimationError;
+    this.linked = false;
   }
 
   ngOnInit() {
@@ -35,6 +38,7 @@ export class GoogleComponent implements OnInit {
     this.popup = false;
     this.logged = false;
     this.endPopup = false;
+    this.linked = this.accountService.isGoogleLinked();
   }
 
   refreshUser() {
@@ -81,7 +85,14 @@ export class GoogleComponent implements OnInit {
         });
       }
       this.refreshUser();
+      this.createAccount();
     });
+  }
+
+  createAccount() {
+    this.googleService.getUser().then((r => {
+      this.accountService.createUser(r.id, 'google');
+    }));
   }
 
   logoutGoogle() {
@@ -99,6 +110,13 @@ export class GoogleComponent implements OnInit {
   }
 
   isLinked() {
-    return true;
+    return this.accountService.isGoogleLinked();
+  }
+
+  unLink() {
+    this.accountService.deleteAccount('google');
+    this.snackBar.open('Vous avez supprimer vos comptes Google !', 'Fermer', {
+      duration: 3000
+    });
   }
 }

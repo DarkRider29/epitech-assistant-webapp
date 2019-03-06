@@ -3,8 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import * as graph from '@microsoft/microsoft-graph-types';
 import {AuthService} from '../../auth/auth.service';
-import {map} from 'rxjs/operators';
-import {DomSanitizer} from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +10,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class OfficeService {
 
   constructor(private authService: AuthService,
-              private http: HttpClient,
-              private sanitizer: DomSanitizer) {
+              private http: HttpClient) {
   }
 
   authRequestOptions() {
@@ -22,7 +19,7 @@ export class OfficeService {
       .set('Content-Type', 'application/json')
       .set('Authorization', 'Bearer ' + this.authService.accessToken());
 
-    return {headers: authHeaders };
+    return {headers: authHeaders};
   }
 
   authRequestOptionsPhoto() {
@@ -30,7 +27,7 @@ export class OfficeService {
     const authHeaders = new HttpHeaders()
       .set('Authorization', 'Bearer ' + this.authService.accessToken());
 
-    return {headers: authHeaders, responseType: 'blob' as 'blob'  };
+    return {headers: authHeaders, responseType: 'blob' as 'blob'};
   }
 
   getUser(): Observable<graph.User> {
