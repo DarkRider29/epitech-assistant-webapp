@@ -9,10 +9,7 @@ import {environment} from '../../../../../environments/environment';
 })
 export class EpitechService {
 
-  autologin: string;
-
   constructor(private http: HttpClient) {
-    this.autologin = 'auth-f3a046cf95582c789ed7a77d56c95c7752001371';
   }
 
   authRequestOptions() {
@@ -22,9 +19,10 @@ export class EpitechService {
     return {headers: authHeaders};
   }
 
-  getUser(): Observable<Intranet> {
+  getUser(email: string): Observable<Intranet> {
 
+    console.log(`email: ${email} - url: ${environment.epitechAPI}${email}`);
     return this.http
-      .get<any>(`${environment.epitechAPI}${this.autologin}/user/?format=json`, this.authRequestOptions());
+      .get<any>(`${environment.epitechAPI}${email}`, this.authRequestOptions());
   }
 }

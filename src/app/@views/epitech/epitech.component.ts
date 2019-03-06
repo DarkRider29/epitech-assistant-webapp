@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EpitechService} from '../../@shared/services/api/epitech/epitech.service';
+import {OfficeService} from '../../@shared/services/api/office365/office.service';
 
 @Component({
   selector: 'app-epitech',
@@ -16,19 +17,24 @@ export class EpitechComponent implements OnInit {
   promo: string;
   courses: string;
 
-  constructor(private epitechService: EpitechService) {
+  constructor(private epitechService: EpitechService, private officeService: OfficeService) {
   }
 
   ngOnInit() {
 
-    this.epitechService.getUser().toPromise().then((r) => {
-      this.firstName = r.firstname;
-      this.lastName = r.lastname;
-      this.email = r.internal_email;
-      this.imageToShow = r.picture;
-      this.location = r.location;
-      this.promo = r.promo;
-      this.courses = r.course_code;
+    this.officeService.getUser().toPromise().then((u) => {
+      this.epitechService.getUser(u.mail).subscribe((r) => {
+        console.log(r);
+        this.firstName = r.firstname;
+        this.lastName = r.lastname;
+        this.email = r.internal_email;
+        this.imageToShow = r.picture;
+        this.location = r.location;
+        this.promo = r.promo;
+        this.courses = r.course_code;
+      });
+    }).catch((e) => {
+      console.error(e);
     });
   }
 
