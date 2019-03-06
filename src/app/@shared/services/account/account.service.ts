@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {OfficeService} from '../api/office365/office.service';
-import {type} from 'os';
 
 @Injectable({
   providedIn: 'root'
