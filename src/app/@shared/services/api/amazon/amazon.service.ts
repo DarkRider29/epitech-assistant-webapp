@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import * as hello from 'hellojs/dist/hello.all.js';
+
+declare const hello: any;
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,6 @@ export class AmazonService {
     return new Promise(((resolve) => {
       hello('amazon').login().then(
         () => {
-          console.log('Connected amazon !');
           resolve(true);
         },
         e => {

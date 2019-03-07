@@ -3,6 +3,7 @@ import {AmazonService} from '../../@shared/services/api/amazon/amazon.service';
 import {MatSnackBar} from '@angular/material';
 import {AnimationError, AnimationLoading, AnimationSuccess} from '../../@shared/animations/animations';
 import {AccountService} from '../../@shared/services/account/account.service';
+import util from 'util';
 
 @Component({
   selector: 'app-amazon',
@@ -12,7 +13,6 @@ import {AccountService} from '../../@shared/services/account/account.service';
 export class AmazonComponent implements OnInit {
 
   firstName: string;
-  lastName: string;
   nickName: string;
   imageToShow: string;
   popup: boolean;
@@ -55,10 +55,8 @@ export class AmazonComponent implements OnInit {
   refreshUser() {
     if (this.amazonService.isAuthenticated()) {
       this.amazonService.getUser().then((r => {
-        /*this.firstName = r.first_name;
-        this.lastName = r.last_name;
-        this.nickName = r.nickname;
-        this.imageToShow = r.thumbnail;*/
+        this.firstName = r.name;
+        this.nickName = r.email;
       }));
     } else {
       this.imageToShow = '';
@@ -89,7 +87,7 @@ export class AmazonComponent implements OnInit {
 
   createAccount() {
     this.amazonService.getUser().then((r => {
-      this.accountService.createUser(r.id, 'amazon');
+      this.accountService.createUser(r.user_id, 'amazon');
     }));
   }
 

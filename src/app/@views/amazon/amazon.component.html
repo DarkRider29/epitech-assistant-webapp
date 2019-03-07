@@ -2,7 +2,7 @@
   <mat-card-header>
     <div mat-card-avatar><img id="photo" [src]="imageToShow || '/assets/amazon.png'" class="mat-card-avatar"></div>
     <div *ngIf="isLogged(); else titleDisconnected">
-      <mat-card-title>{{firstName}} {{lastName}}</mat-card-title>
+      <mat-card-title>{{firstName}}</mat-card-title>
       <mat-card-subtitle>{{nickName}}</mat-card-subtitle>
     </div>
     <ng-template #titleDisconnected>

@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
-import * as hello from 'hellojs/dist/hello.all.js';
+
+
+declare const hello: any;
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +33,6 @@ export class GoogleService {
     return new Promise(((resolve) => {
       hello('google').login().then(
         () => {
-          console.log('Connected google !');
           resolve(true);
         },
         e => {

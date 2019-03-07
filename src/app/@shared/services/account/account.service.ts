@@ -55,7 +55,11 @@ export class AccountService {
       d.forEach(e => {
         this.firestore.collection('users').doc(e.id).delete();
       });
-      this.googleLinked = false;
+      if (type === 'google') {
+        this.googleLinked = false;
+      } else if (type === 'amazon') {
+        this.amazonLinked = false;
+      }
     });
   }
 }

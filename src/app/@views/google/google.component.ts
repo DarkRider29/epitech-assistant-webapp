@@ -44,10 +44,9 @@ export class GoogleComponent implements OnInit {
   refreshUser() {
     if (this.googleService.isAuthenticated()) {
       this.googleService.getUser().then((r => {
-        console.log(r);
         this.firstName = r.first_name;
         this.lastName = r.last_name;
-        this.nickName = r.nickname;
+        this.nickName = r.name;
         this.imageToShow = r.thumbnail;
       }));
     } else {

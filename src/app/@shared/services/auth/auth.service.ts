@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
-import * as hello from 'hellojs/dist/hello.all.js';
 import {environment} from '../../../../environments/environment';
 import {Router} from '@angular/router';
+
+declare const hello: any;
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +28,7 @@ export class AuthService {
           id: environment.googleId,
           oauth: {
             version: 2,
-            auth: 'https://accounts.google.com/o/oauth2/auth',
-            grant: 'https://accounts.google.com/o/oauth2/token'
+            auth: 'https://accounts.google.com/o/oauth2/auth'
           },
         },
         amazon: {
