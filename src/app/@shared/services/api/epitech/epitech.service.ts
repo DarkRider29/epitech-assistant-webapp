@@ -21,7 +21,6 @@ export class EpitechService {
 
   getUser(email: string): Observable<Intranet> {
 
-    console.log(`email: ${email} - url: ${environment.epitechAPI}${email}`);
     return this.http
       .get<any>(`${environment.epitechAPI}${email}`, this.authRequestOptions());
   }

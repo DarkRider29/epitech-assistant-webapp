@@ -24,7 +24,6 @@ export class EpitechComponent implements OnInit {
 
     this.officeService.getUser().toPromise().then((u) => {
       this.epitechService.getUser(u.mail).subscribe((r) => {
-        console.log(r);
         this.firstName = r.firstname;
         this.lastName = r.lastname;
         this.email = r.internal_email;
